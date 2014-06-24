@@ -104,7 +104,7 @@
                 options.unset ? delete result[field] : result[field] = val;
             } else {
                 //Create the child object if it doesn't exist, or isn't an object
-                if (typeof result[field] === 'undefined' || ! _.isObject(result[field])) {
+                if (!options.unset && (typeof result[field] === 'undefined' || ! _.isObject(result[field]))) {
                     var nextField = fields[i+1];
 
                     // create array if next field is integer, else create object

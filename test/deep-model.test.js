@@ -711,6 +711,50 @@ test('hasChanged(): with deep attributes', function() {
     equal(deepModel.hasChanged(), true);
 });
 
+test('hasChanged(): with deep attributes and NO change', function() {
+  var deepModel = new Backbone.DeepModel({
+    foo: { bar: 1 }
+  });
+
+  var deepModel2 = new Backbone.DeepModel({
+    foo: { baz: 1 },
+    bar: { baz: 1 }
+  });
+
+  deepModel.set({'foo.bar':1});
+  equal(deepModel.hasChanged(), false);
+
+  deepModel2.set({'bar.baz':1});
+  equal(deepModel2.hasChanged(), false);
+
+});
+
+test('hasChanged(): with deep array attributes and NO change', function() {
+  var deepModel = new Backbone.DeepModel({
+    foo: { bar: ['baz','derp']}
+  });
+
+  equal(deepModel.hasChanged(), false);
+
+  deepModel.set({'foo.bar':['baz','derp']});
+  equal(deepModel.hasChanged(), false);
+
+});
+
+
+
+test('changedAttributes(): with deep properties and NO change', function() {
+  var deepModel = new Backbone.DeepModel({
+    foo: { baz: 1 },
+    bar: { baz: 1 }
+  });
+
+  deepEqual(deepModel.changedAttributes(), false);
+
+  deepModel.set({'foo.baz':2});
+  deepEqual(deepModel.changedAttributes(), {'foo.baz':2});
+});
+
 
 test('hasChanged(attr): behaves as Model for top level attributes', function() {
     var model = new Backbone.Model({test:1}),
