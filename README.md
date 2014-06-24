@@ -1,4 +1,4 @@
-NOTE: I no longer have time to maintain this module. If you have an actively maintained fork let me know and I'll add the link here.
+Lame fork by SPW to fix a bug
 
 backbone-deep-model
 ===================

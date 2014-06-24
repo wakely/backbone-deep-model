@@ -4,6 +4,9 @@
   "author": {
     "name": "Charles Davison"
   },
+  "contributors": [{
+    "name": "Scott P. Wakely"
+  }],
   "version": "0.11.1",
   "dependencies": {
     "backbone": ">=0.9.10"

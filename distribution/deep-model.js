@@ -3,7 +3,8 @@
  *
  * Backbone.DeepModel v0.11.1
  *
- * Copyright (c) 2013 Charles Davison, Pow Media Ltd
+ * Copyright (c) 2014 Charles Davison, Pow Media Ltd
+ * Forked by Scott Wakely
  *
  * https://github.com/powmedia/backbone-deep-model
  * Licensed under the MIT License
@@ -228,10 +229,7 @@
                 options.unset ? delete result[field] : result[field] = val;
             } else {
                 //Create the child object if it doesn't exist, or isn't an object
-                  //SPW: this may fix a bug where .changed gets filled with keys with empty changes, which
-                  //will make a patch destroy nested models on the server.
-              //if (!options.unset && (typeof result[field] === 'undefined' || ! _.isObject(result[field]))) {
-              if (typeof result[field] === 'undefined' || ! _.isObject(result[field])) {
+                if (!options.unset && (typeof result[field] === 'undefined' || ! _.isObject(result[field]))) {
                     var nextField = fields[i+1];
 
                     // create array if next field is integer, else create object
